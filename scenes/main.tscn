@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3sq2frrml12m"]
+[gd_scene load_steps=37 format=3 uid="uid://c3sq2frrml12m"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_l67de"]
 [ext_resource type="PackedScene" uid="uid://ba77rfswmmxbp" path="res://assets/mesh/block.tscn" id="2_3dee6"]
@@ -6,9 +6,26 @@
 [ext_resource type="PackedScene" uid="uid://ci26d03y7adfv" path="res://scenes/player/player.tscn" id="3_4gg2r"]
 [ext_resource type="FontFile" uid="uid://cnngv3231ymrp" path="res://assets/fonts/MajorMonoDisplay-Regular.ttf" id="3_pulxx"]
 [ext_resource type="PackedScene" uid="uid://de2bhimrbpfoy" path="res://assets/mesh/wooden_torch.tscn" id="4_ktol0"]
+[ext_resource type="Script" path="res://scripts/ui/fps_label.gd" id="4_pwmae"]
 [ext_resource type="PackedScene" uid="uid://dqdbsia6di82e" path="res://assets/mesh/garlic.tscn" id="5_8qnji"]
 [ext_resource type="Resource" uid="uid://cmlsxcsclphqt" path="res://data/player/human_player_data.tres" id="8_5s1bk"]
+[ext_resource type="Resource" uid="uid://ms4h4g317jvm" path="res://data/player/vampire_player_data.tres" id="9_b4la8"]
 [ext_resource type="PackedScene" uid="uid://ojqgjlmtm258" path="res://assets/mesh/boat.tscn" id="9_wfgir"]
+[ext_resource type="PackedScene" uid="uid://8b23s6axh22l" path="res://assets/mesh/tree_cone_dark.tscn" id="11_xhl5m"]
+[ext_resource type="PackedScene" uid="uid://dhb4oy7mt32q1" path="res://assets/mesh/tree_default_dark.tscn" id="12_g8yew"]
+[ext_resource type="PackedScene" uid="uid://c52utgwvou7hh" path="res://assets/mesh/tree_fat_darkh.tscn" id="13_2ibqn"]
+[ext_resource type="PackedScene" uid="uid://dsmjixrf6ii35" path="res://assets/mesh/tree_oak_dark.tscn" id="13_blnn3"]
+[ext_resource type="PackedScene" uid="uid://i00pjqeqewoc" path="res://assets/mesh/block_slope.tscn" id="15_gu04o"]
+[ext_resource type="PackedScene" uid="uid://cqgcdjw1h0sva" path="res://assets/mesh/import/jewel.glb" id="16_8evgm"]
+[ext_resource type="PackedScene" uid="uid://c5tf3dvvg1pbi" path="res://assets/mesh/import/key.glb" id="17_g7qst"]
+[ext_resource type="PackedScene" uid="uid://rwsgk3sju5dx" path="res://assets/mesh/import/lever.glb" id="18_uxkju"]
+[ext_resource type="PackedScene" uid="uid://xdbjx7g84a8f" path="res://assets/mesh/import/lock.glb" id="19_j6ler"]
+[ext_resource type="PackedScene" uid="uid://ckkal3f5pwve6" path="res://assets/mesh/import/sign.glb" id="20_40qdp"]
+[ext_resource type="PackedScene" uid="uid://cht2ei8nqvfou" path="res://assets/mesh/door_open.tscn" id="21_6lr3v"]
+[ext_resource type="PackedScene" uid="uid://bodfqyfcpwvcy" path="res://assets/mesh/door_closed.tscn" id="22_2euna"]
+[ext_resource type="Material" uid="uid://c4x0xmkl8e3nd" path="res://assets/mats/white.tres" id="23_glrxl"]
+[ext_resource type="PackedScene" uid="uid://c5kyphoajichr" path="res://assets/mesh/door_large_open.tscn" id="23_vryr3"]
+[ext_resource type="PackedScene" uid="uid://uhka87vaqb5o" path="res://assets/mesh/door_large_closed.tscn" id="24_tdwly"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nvcia"]
 font = ExtResource("3_pulxx")
@@ -28,6 +45,34 @@ ambient_light_energy = 0.4
 reflected_light_source = 2
 fog_enabled = true
 fog_light_energy = 0.4
+
+[sub_resource type="Gradient" id="Gradient_vjr2o"]
+offsets = PackedFloat32Array(0, 0.473154, 0.939597, 0.996644)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0.141176)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t186e"]
+gradient = SubResource("Gradient_vjr2o")
+
+[sub_resource type="Curve" id="Curve_xclj1"]
+_data = [Vector2(0, 0.313714), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5db84"]
+curve = SubResource("Curve_xclj1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1o6iw"]
+particle_flag_align_y = true
+emission_shape = 1
+emission_sphere_radius = 0.5
+gravity = Vector3(0, 1, 0)
+tangential_accel_max = 0.5
+scale_curve = SubResource("CurveTexture_5db84")
+color_ramp = SubResource("GradientTexture1D_t186e")
+
+[sub_resource type="SphereMesh" id="SphereMesh_dxlmo"]
+material = ExtResource("23_glrxl")
+radial_segments = 6
+rings = 2
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_l67de")
@@ -54,13 +99,14 @@ color = Color(0, 0, 0, 0.392157)
 
 [node name="hud" type="CanvasLayer" parent="."]
 
-[node name="Label" parent="hud" instance=ExtResource("2_lco3m")]
+[node name="fps" parent="hud" instance=ExtResource("2_lco3m")]
 label_settings = SubResource("LabelSettings_nvcia")
+script = ExtResource("4_pwmae")
 
 [node name="sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-visible = false
 light_color = Color(1, 0.8, 0.8, 1)
+light_energy = 0.05
 shadow_enabled = true
 
 [node name="environment" type="WorldEnvironment" parent="."]
@@ -72,10 +118,6 @@ environment = SubResource("Environment_jppre")
 
 [node name="ground" parent="world/floors" instance=ExtResource("2_3dee6")]
 transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -1, 0)
-
-[node name="floor1" parent="world/floors" instance=ExtResource("2_3dee6")]
-transform = Transform3D(75, 0, 0, 0, 1, 0, 0, 0, 75, 0, 10, 0)
-visible = false
 
 [node name="walls" type="Node3D" parent="world"]
 
@@ -91,7 +133,59 @@ transform = Transform3D(1, 0, 0, 0, 0.971026, 0.238974, 0, -0.238974, 0.971026, 
 [node name="boat" parent="world" instance=ExtResource("9_wfgir")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9369, -0.00019598, -18.3483)
 
-[node name="enemies" type="Node3D" parent="."]
+[node name="trees" type="Node3D" parent="world"]
+
+[node name="tree_cone_dark" parent="world/trees" instance=ExtResource("11_xhl5m")]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, -15.0315, -0.000195503, 32.2141)
+
+[node name="tree_oak_dark" parent="world/trees" instance=ExtResource("13_blnn3")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -31, 0, 6)
+
+[node name="tree_fat_darkh" parent="world/trees" instance=ExtResource("13_2ibqn")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -31, 0, 28)
+
+[node name="tree_default_dark" parent="world/trees" instance=ExtResource("12_g8yew")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 31, 0, 11)
+
+[node name="block_slope" parent="world" instance=ExtResource("15_gu04o")]
+transform = Transform3D(-9.06308, 0, 4.22618, 0, 4, 0, -4.22618, 0, -9.06308, 29, 0, -16)
+
+[node name="testwall" parent="world" instance=ExtResource("2_3dee6")]
+transform = Transform3D(10.26, 0, 0, 0, 8.602, 0, 0, 0, 1, 12, 0, -36)
+
+[node name="jewel2" parent="world" instance=ExtResource("16_8evgm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -7)
+
+[node name="key2" parent="world" instance=ExtResource("17_g7qst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -5)
+
+[node name="lever2" parent="world" instance=ExtResource("18_uxkju")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -3)
+
+[node name="lock2" parent="world" instance=ExtResource("19_j6ler")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -5)
+
+[node name="sign2" parent="world" instance=ExtResource("20_40qdp")]
+transform = Transform3D(-1.93185, 0, -0.517638, 0, 2, 0, 0.517638, 0, -1.93185, -10, 0, -15)
+
+[node name="doorOpen" parent="world" instance=ExtResource("21_6lr3v")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 2, -34.3877, -0.000196457, -29.2782)
+
+[node name="doorClosed" parent="world" instance=ExtResource("22_2euna")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 2, -28.0938, -0.000196457, -28.8392)
+
+[node name="doorLargeOpen" parent="world" instance=ExtResource("23_vryr3")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 2, -35.4159, -0.000196457, -11.7095)
+
+[node name="doorLargeClosed" parent="world" instance=ExtResource("24_tdwly")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 2, -25.916, -0.000196457, -13.24)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 16)
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_1o6iw")
+draw_pass_1 = SubResource("SphereMesh_dxlmo")
 
 [node name="player" parent="." instance=ExtResource("3_4gg2r")]
-movement = ExtResource("8_5s1bk")
+human_data = ExtResource("8_5s1bk")
+vampire_data = ExtResource("9_b4la8")

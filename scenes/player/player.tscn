@@ -1,12 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://ci26d03y7adfv"]
+[gd_scene load_steps=10 format=3 uid="uid://ci26d03y7adfv"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_dqht8"]
 [ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="2_vo32k"]
 [ext_resource type="Material" uid="uid://c4x0xmkl8e3nd" path="res://assets/mats/white.tres" id="2_wblri"]
 [ext_resource type="Script" path="res://scripts/player/player_head.gd" id="3_xo5nw"]
 [ext_resource type="PackedScene" uid="uid://p3c1cgp4d502" path="res://scenes/player/sub_camera.tscn" id="4_v7lrx"]
-[ext_resource type="AudioStream" uid="uid://l1rcupg13kkv" path="res://assets/sounds/footsteps_noiseless.wav" id="6_1p60b"]
-[ext_resource type="AudioStream" uid="uid://bqc8yvybb34te" path="res://assets/sounds/float.wav" id="7_l55i2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hmmtu"]
 material = ExtResource("2_wblri")
@@ -75,12 +73,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 cull_mask = 2
 
 [node name="footsteps" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_1p60b")
 volume_db = -10.0
-pitch_scale = 0.8
-autoplay = true
-
-[node name="floating" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_l55i2")
-volume_db = -10.0
-pitch_scale = 0.2
