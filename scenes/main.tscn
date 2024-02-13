@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=3 uid="uid://c3sq2frrml12m"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_l67de"]
+[ext_resource type="PackedScene" uid="uid://ba77rfswmmxbp" path="res://assets/mesh/block.tscn" id="2_3dee6"]
+[ext_resource type="PackedScene" uid="uid://cs6wja8rwmr1s" path="res://assets/fonts/label.tscn" id="2_lco3m"]
+[ext_resource type="PackedScene" uid="uid://ci26d03y7adfv" path="res://scenes/player/player.tscn" id="3_4gg2r"]
+[ext_resource type="FontFile" uid="uid://cnngv3231ymrp" path="res://assets/fonts/MajorMonoDisplay-Regular.ttf" id="3_pulxx"]
+[ext_resource type="PackedScene" uid="uid://de2bhimrbpfoy" path="res://assets/mesh/wooden_torch.tscn" id="4_ktol0"]
+[ext_resource type="PackedScene" uid="uid://dqdbsia6di82e" path="res://assets/mesh/garlic.tscn" id="5_8qnji"]
+[ext_resource type="Resource" uid="uid://cmlsxcsclphqt" path="res://data/player/human_player_data.tres" id="8_5s1bk"]
+[ext_resource type="PackedScene" uid="uid://ojqgjlmtm258" path="res://assets/mesh/boat.tscn" id="9_wfgir"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nvcia"]
+font = ExtResource("3_pulxx")
+font_size = 42
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_duv8w"]
+
+[sub_resource type="Sky" id="Sky_022a3"]
+sky_material = SubResource("ProceduralSkyMaterial_duv8w")
+
+[sub_resource type="Environment" id="Environment_jppre"]
+background_mode = 2
+sky = SubResource("Sky_022a3")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.4
+ambient_light_energy = 0.4
+reflected_light_source = 2
+fog_enabled = true
+fog_light_energy = 0.4
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_l67de")
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="pause" type="Control" parent="ui"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="ColorRect" parent="ui/pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="hud" type="CanvasLayer" parent="."]
+
+[node name="Label" parent="hud" instance=ExtResource("2_lco3m")]
+label_settings = SubResource("LabelSettings_nvcia")
+
+[node name="sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+visible = false
+light_color = Color(1, 0.8, 0.8, 1)
+shadow_enabled = true
+
+[node name="environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jppre")
+
+[node name="world" type="Node3D" parent="."]
+
+[node name="floors" type="Node3D" parent="world"]
+
+[node name="ground" parent="world/floors" instance=ExtResource("2_3dee6")]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -1, 0)
+
+[node name="floor1" parent="world/floors" instance=ExtResource("2_3dee6")]
+transform = Transform3D(75, 0, 0, 0, 1, 0, 0, 0, 75, 0, 10, 0)
+visible = false
+
+[node name="walls" type="Node3D" parent="world"]
+
+[node name="block" parent="world" instance=ExtResource("2_3dee6")]
+transform = Transform3D(1.41421, 0, 1.41421, 0, 2, 0, -1.41421, 0, 1.41421, 5.29179, -0.000196457, -6.78875)
+
+[node name="WoodenTorch" parent="world" instance=ExtResource("4_ktol0")]
+transform = Transform3D(1, 0, 0, 0, 0.489732, 0.871873, 0, -0.871873, 0.489732, -3.28871, 0.757801, -4.5338)
+
+[node name="garlic" parent="world" instance=ExtResource("5_8qnji")]
+transform = Transform3D(1, 0, 0, 0, 0.971026, 0.238974, 0, -0.238974, 0.971026, -2, 1, -10)
+
+[node name="boat" parent="world" instance=ExtResource("9_wfgir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9369, -0.00019598, -18.3483)
+
+[node name="enemies" type="Node3D" parent="."]
+
+[node name="player" parent="." instance=ExtResource("3_4gg2r")]
+movement = ExtResource("8_5s1bk")

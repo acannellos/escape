@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://i00pjqeqewoc"]
+
+[ext_resource type="Material" uid="uid://c4x0xmkl8e3nd" path="res://assets/mats/white.tres" id="1_kq6q7"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1ub7m"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1.00001, 1.00001),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(2, 0, 0, 0, 1, 0, 5, 0, 3, 0, 4, 0, 5, 0, 2, 0, 1, 0, 1, 0, 3, 0, 5, 0, 4, 0, 3, 0, 1, 0, 1, 0, 0, 0, 4, 0, 0, 0, 2, 0, 5, 0, 5, 0, 4, 0, 0, 0),
+"name": "dirt",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray(0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 255, 255, 254, 255, 254, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_h4adw"]
+resource_name = "blockDirtRamp_Mesh blockDirtRamp"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1.00001, 1.00001),
+"attribute_data": PackedByteArray(255, 255, 127, 7, 255, 255, 35, 131, 0, 0, 35, 131, 0, 0, 35, 131, 0, 0, 127, 7, 255, 255, 35, 131, 255, 255, 81, 69, 255, 255, 245, 192, 0, 0, 81, 69, 0, 0, 245, 192, 255, 255, 35, 131, 0, 0, 35, 131, 255, 255, 127, 7, 0, 0, 127, 7, 255, 255, 217, 174, 0, 0, 217, 174, 255, 255, 0, 0, 0, 0, 0, 0),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray(2, 0, 0, 0, 1, 0, 5, 0, 3, 0, 4, 0, 8, 0, 6, 0, 7, 0, 7, 0, 9, 0, 8, 0, 12, 0, 10, 0, 11, 0, 11, 0, 13, 0, 12, 0, 16, 0, 14, 0, 15, 0, 15, 0, 17, 0, 16, 0),
+"material": ExtResource("1_kq6q7"),
+"name": "dirt",
+"primitive": 3,
+"uv_scale": Vector4(39.3701, 81.5165, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray(0, 0, 254, 255, 254, 255, 255, 191, 0, 0, 0, 0, 254, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 254, 255, 255, 191, 255, 255, 254, 255, 254, 255, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 254, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 254, 255, 255, 255, 255, 255, 0, 0, 254, 255, 255, 127, 0, 0, 0, 0, 254, 255, 255, 127, 255, 255, 254, 255, 254, 255, 255, 127, 0, 0, 254, 255, 254, 255, 255, 127, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 254, 255, 254, 255, 255, 255, 255, 255, 254, 255, 254, 255, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 63, 255, 127, 255, 63, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 129, 218, 255, 127, 129, 218, 255, 127, 129, 218, 255, 127, 129, 218)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1ub7m")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_30ut8"]
+points = PackedVector3Array(0.507937, 1.00774, 0.476116, -0.507937, -0.00773764, -0.507937, -0.5, 0.000195793, 0.5, 0.507937, -0.00773764, -0.507937, -0.507937, 1.00774, 0.476116, 0.5, 0.000195793, 0.5, -0.507937, 0.0239773, -0.507937, -0.5, 0.999804, 0.5, 0.507937, 0.0239773, -0.507937, 0.5, 0.999804, 0.5, 0.507937, 0.960215, 0.428484, -0.507937, 0.960215, 0.428484)
+
+[node name="block_slope" type="Node3D"]
+
+[node name="block_slope" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_h4adw")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="block_slope"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="block_slope/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_30ut8")

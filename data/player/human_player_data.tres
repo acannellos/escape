@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayerMovementData" load_steps=2 format=3 uid="uid://cmlsxcsclphqt"]
+
+[ext_resource type="Script" path="res://scripts/player/player_movement_data.gd" id="1_o2kbj"]
+
+[resource]
+script = ExtResource("1_o2kbj")
+gravity = 18.0
+base_speed = 6.0
+base_acceleration = 0.25
+air_multiplier = 0.5
+jump_velocity = 6.0
+max_air_jumps = 1

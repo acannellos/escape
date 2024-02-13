@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs6wja8rwmr1s"]
+
+[ext_resource type="FontFile" uid="uid://cnngv3231ymrp" path="res://assets/fonts/MajorMonoDisplay-Regular.ttf" id="1_kqjb6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tbmen"]
+font = ExtResource("1_kqjb6")
+
+[node name="Label" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "100"
+label_settings = SubResource("LabelSettings_tbmen")
