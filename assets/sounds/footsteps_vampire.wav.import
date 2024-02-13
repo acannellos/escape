@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bqc8yvybb34te"
-path="res://.godot/imported/float.wav-8e26e9340c98874c8c789ddb0c5f2af8.sample"
+path="res://.godot/imported/footsteps_vampire.wav-d0978affafb04f15991d183dd61f01a6.sample"
 
 [deps]
 
-source_file="res://assets/sounds/float.wav"
-dest_files=["res://.godot/imported/float.wav-8e26e9340c98874c8c789ddb0c5f2af8.sample"]
+source_file="res://assets/sounds/footsteps_vampire.wav"
+dest_files=["res://.godot/imported/footsteps_vampire.wav-d0978affafb04f15991d183dd61f01a6.sample"]
 
 [params]
 

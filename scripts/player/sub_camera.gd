@@ -7,6 +7,9 @@ extends Camera3D
 @onready var arms = $rig/arms
 
 func _ready():
+	set_mat()
+
+func set_mat():
 	for child in arm_arr:
 		child.set_surface_override_material(0,color)
 

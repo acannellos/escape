@@ -1,5 +1,5 @@
 extends Resource
-class_name PlayerMovementData
+class_name PlayerData
 
 @export var gravity: float = 20.0
 @export var base_speed: float = 5.0
@@ -9,3 +9,9 @@ class_name PlayerMovementData
 #@export var sneak_multiplier: float = 0.5
 @export var jump_velocity: float = 6
 @export var max_air_jumps: int = 1
+
+@export var skin_color: StandardMaterial3D
+
+@export var footstep_sound: AudioStream
+@export var footstep_pitch: float = 1.0
+

@@ -1,12 +1,17 @@
-[gd_resource type="Resource" script_class="PlayerMovementData" load_steps=2 format=3 uid="uid://cmlsxcsclphqt"]
+[gd_resource type="Resource" script_class="PlayerData" load_steps=4 format=3 uid="uid://cmlsxcsclphqt"]
 
-[ext_resource type="Script" path="res://scripts/player/player_movement_data.gd" id="1_o2kbj"]
+[ext_resource type="AudioStream" uid="uid://l1rcupg13kkv" path="res://assets/sounds/footsteps_human.wav" id="1_2ncjf"]
+[ext_resource type="Script" path="res://scripts/player/player_data.gd" id="2_lr1mr"]
+[ext_resource type="Material" uid="uid://dlwlkxfne4ob" path="res://assets/mats/orange.tres" id="3_ra20b"]
 
 [resource]
-script = ExtResource("1_o2kbj")
+script = ExtResource("2_lr1mr")
 gravity = 18.0
 base_speed = 6.0
 base_acceleration = 0.25
 air_multiplier = 0.5
 jump_velocity = 6.0
 max_air_jumps = 1
+skin_color = ExtResource("3_ra20b")
+footstep_sound = ExtResource("1_2ncjf")
+footstep_pitch = 1.0
