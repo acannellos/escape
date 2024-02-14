@@ -20,6 +20,8 @@ var sensitivity: float = 0.001
 @onready var camera = $head/camera
 @onready var sub_viewport = $head/camera/SubViewportContainer/SubViewport
 @onready var sub_camera = $head/camera/SubViewportContainer/SubViewport/sub_camera
+@onready var ray = $head/camera/ray
+@onready var interact_label = $canvas/interact_label
 
 @onready var collision = $CollisionShape3D
 
@@ -37,6 +39,7 @@ func _ready():
 func set_data():
 	footsteps.stream = data.footstep_sound
 	footsteps.pitch_scale = data.footstep_pitch
+	footsteps.volume_db = data.footstep_volume
 	footsteps.play()
 	
 	sub_camera.color = data.skin_color
@@ -64,6 +67,26 @@ func _input(event):
 		set_data()
 		#Audio.play("assets/sounds/player_land.wav")
 		#collision.disabled = false
+	
+	if event.is_action_pressed("interact"):
+		if ray.is_colliding():
+			var x = ray.get_collider().owner
+			#print("COLLIDING")
+			#print(x.get_name())
+			if x.has_method("interact"):
+				#print(x.get_name())
+				x.interact()
+
+func handle_interact_label():
+	if ray.is_colliding():
+		var x = ray.get_collider().owner
+		if x.has_method("interact"):
+			#print("COLLIDING")
+			interact_label.set_text(x.label)
+		else:
+			interact_label.set_text("")
+	else:
+		interact_label.set_text("")
 
 func _physics_process(delta):
 	
@@ -73,6 +96,7 @@ func _physics_process(delta):
 	
 	handle_grounded(delta)
 	handle_movement(delta)
+	handle_interact_label()
 	#sub_camera.global_transform = camera.global_transform
 	sub_camera.global_transform = head.global_transform
 	

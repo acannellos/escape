@@ -15,3 +15,4 @@ max_air_jumps = 999
 skin_color = ExtResource("3_5mw5p")
 footstep_sound = ExtResource("1_n623w")
 footstep_pitch = 0.2
+footstep_volume = 10.0
