@@ -14,4 +14,5 @@ class_name PlayerData
 
 @export var footstep_sound: AudioStream
 @export var footstep_pitch: float = 1.0
+@export var footstep_volume: float = 0.0
 

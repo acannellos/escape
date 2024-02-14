@@ -5,27 +5,27 @@
 [ext_resource type="PackedScene" uid="uid://cs6wja8rwmr1s" path="res://assets/fonts/label.tscn" id="2_lco3m"]
 [ext_resource type="PackedScene" uid="uid://ci26d03y7adfv" path="res://scenes/player/player.tscn" id="3_4gg2r"]
 [ext_resource type="FontFile" uid="uid://cnngv3231ymrp" path="res://assets/fonts/MajorMonoDisplay-Regular.ttf" id="3_pulxx"]
-[ext_resource type="PackedScene" uid="uid://de2bhimrbpfoy" path="res://assets/mesh/wooden_torch.tscn" id="4_ktol0"]
 [ext_resource type="Script" path="res://scripts/ui/fps_label.gd" id="4_pwmae"]
-[ext_resource type="PackedScene" uid="uid://dqdbsia6di82e" path="res://assets/mesh/garlic.tscn" id="5_8qnji"]
 [ext_resource type="Resource" uid="uid://cmlsxcsclphqt" path="res://data/player/human_player_data.tres" id="8_5s1bk"]
 [ext_resource type="Resource" uid="uid://ms4h4g317jvm" path="res://data/player/vampire_player_data.tres" id="9_b4la8"]
 [ext_resource type="PackedScene" uid="uid://ojqgjlmtm258" path="res://assets/mesh/boat.tscn" id="9_wfgir"]
 [ext_resource type="PackedScene" uid="uid://8b23s6axh22l" path="res://assets/mesh/tree_cone_dark.tscn" id="11_xhl5m"]
 [ext_resource type="PackedScene" uid="uid://dhb4oy7mt32q1" path="res://assets/mesh/tree_default_dark.tscn" id="12_g8yew"]
+[ext_resource type="PackedScene" uid="uid://jyecd11khb8y" path="res://assets/mesh/key.tscn" id="12_uince"]
 [ext_resource type="PackedScene" uid="uid://c52utgwvou7hh" path="res://assets/mesh/tree_fat_darkh.tscn" id="13_2ibqn"]
+[ext_resource type="PackedScene" uid="uid://dth0ys7ndxg8" path="res://assets/mesh/lever.tscn" id="13_aa423"]
 [ext_resource type="PackedScene" uid="uid://dsmjixrf6ii35" path="res://assets/mesh/tree_oak_dark.tscn" id="13_blnn3"]
+[ext_resource type="PackedScene" uid="uid://bpe2qvlflgpo0" path="res://assets/mesh/lock.tscn" id="14_p64md"]
 [ext_resource type="PackedScene" uid="uid://i00pjqeqewoc" path="res://assets/mesh/block_slope.tscn" id="15_gu04o"]
-[ext_resource type="PackedScene" uid="uid://cqgcdjw1h0sva" path="res://assets/mesh/import/jewel.glb" id="16_8evgm"]
-[ext_resource type="PackedScene" uid="uid://c5tf3dvvg1pbi" path="res://assets/mesh/import/key.glb" id="17_g7qst"]
-[ext_resource type="PackedScene" uid="uid://rwsgk3sju5dx" path="res://assets/mesh/import/lever.glb" id="18_uxkju"]
-[ext_resource type="PackedScene" uid="uid://xdbjx7g84a8f" path="res://assets/mesh/import/lock.glb" id="19_j6ler"]
-[ext_resource type="PackedScene" uid="uid://ckkal3f5pwve6" path="res://assets/mesh/import/sign.glb" id="20_40qdp"]
+[ext_resource type="PackedScene" uid="uid://45mwgghymu6h" path="res://assets/mesh/sign.tscn" id="18_spij4"]
 [ext_resource type="PackedScene" uid="uid://cht2ei8nqvfou" path="res://assets/mesh/door_open.tscn" id="21_6lr3v"]
 [ext_resource type="PackedScene" uid="uid://bodfqyfcpwvcy" path="res://assets/mesh/door_closed.tscn" id="22_2euna"]
+[ext_resource type="PackedScene" uid="uid://bwx4s6c7555l" path="res://assets/mesh/wooden_torch_interactable.tscn" id="22_4ly1g"]
 [ext_resource type="Material" uid="uid://c4x0xmkl8e3nd" path="res://assets/mats/white.tres" id="23_glrxl"]
 [ext_resource type="PackedScene" uid="uid://c5kyphoajichr" path="res://assets/mesh/door_large_open.tscn" id="23_vryr3"]
 [ext_resource type="PackedScene" uid="uid://uhka87vaqb5o" path="res://assets/mesh/door_large_closed.tscn" id="24_tdwly"]
+[ext_resource type="AudioStream" uid="uid://bo25b35f2dxms" path="res://assets/sounds/HMM.wav" id="27_3wnho"]
+[ext_resource type="PackedScene" uid="uid://b87xbikifjyql" path="res://assets/mesh/glass_wine_red.tscn" id="28_7txa8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nvcia"]
 font = ExtResource("3_pulxx")
@@ -124,14 +124,8 @@ transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -1, 0)
 [node name="block" parent="world" instance=ExtResource("2_3dee6")]
 transform = Transform3D(1.41421, 0, 1.41421, 0, 2, 0, -1.41421, 0, 1.41421, 5.29179, -0.000196457, -6.78875)
 
-[node name="WoodenTorch" parent="world" instance=ExtResource("4_ktol0")]
-transform = Transform3D(1, 0, 0, 0, 0.489732, 0.871873, 0, -0.871873, 0.489732, -3.28871, 0.757801, -4.5338)
-
-[node name="garlic" parent="world" instance=ExtResource("5_8qnji")]
-transform = Transform3D(1, 0, 0, 0, 0.971026, 0.238974, 0, -0.238974, 0.971026, -2, 1, -10)
-
 [node name="boat" parent="world" instance=ExtResource("9_wfgir")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9369, -0.00019598, -18.3483)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.9369, -0.00019598, -18.3483)
 
 [node name="trees" type="Node3D" parent="world"]
 
@@ -153,20 +147,17 @@ transform = Transform3D(-9.06308, 0, 4.22618, 0, 4, 0, -4.22618, 0, -9.06308, 29
 [node name="testwall" parent="world" instance=ExtResource("2_3dee6")]
 transform = Transform3D(10.26, 0, 0, 0, 8.602, 0, 0, 0, 1, 12, 0, -36)
 
-[node name="jewel2" parent="world" instance=ExtResource("16_8evgm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -7)
-
-[node name="key2" parent="world" instance=ExtResource("17_g7qst")]
+[node name="key" parent="world" instance=ExtResource("12_uince")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -5)
 
-[node name="lever2" parent="world" instance=ExtResource("18_uxkju")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -3)
+[node name="lever" parent="world" instance=ExtResource("13_aa423")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 2)
 
-[node name="lock2" parent="world" instance=ExtResource("19_j6ler")]
+[node name="lock" parent="world" instance=ExtResource("14_p64md")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -5)
 
-[node name="sign2" parent="world" instance=ExtResource("20_40qdp")]
-transform = Transform3D(-1.93185, 0, -0.517638, 0, 2, 0, 0.517638, 0, -1.93185, -10, 0, -15)
+[node name="sign" parent="world" instance=ExtResource("18_spij4")]
+transform = Transform3D(-1.93185, 0, -0.517638, 0, 2, 0, 0.517638, 0, -1.93185, -9, 0, -15)
 
 [node name="doorOpen" parent="world" instance=ExtResource("21_6lr3v")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 2, -34.3877, -0.000196457, -29.2782)
@@ -180,12 +171,22 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 2, -35.4159, -0.000196457, -11.7
 [node name="doorLargeClosed" parent="world" instance=ExtResource("24_tdwly")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 2, -25.916, -0.000196457, -13.24)
 
+[node name="glassWineRed" parent="world" instance=ExtResource("28_7txa8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
 [node name="GPUParticles3D" type="GPUParticles3D" parent="world"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 16)
 lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_1o6iw")
 draw_pass_1 = SubResource("SphereMesh_dxlmo")
 
+[node name="WoodenTorch" parent="world" instance=ExtResource("22_4ly1g")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -8, 0, -2)
+
 [node name="player" parent="." instance=ExtResource("3_4gg2r")]
 human_data = ExtResource("8_5s1bk")
 vampire_data = ExtResource("9_b4la8")
+
+[node name="bgmusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_3wnho")
+autoplay = true

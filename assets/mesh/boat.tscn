@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ojqgjlmtm258"]
+[gd_scene load_steps=9 format=3 uid="uid://ojqgjlmtm258"]
 
+[ext_resource type="Script" path="res://scripts/interact/boat.gd" id="1_iyb40"]
 [ext_resource type="PackedScene" uid="uid://fflr0xdyfdtj" path="res://assets/mesh/import/canoe_paddle.glb" id="1_tnbua"]
+[ext_resource type="PackedScene" uid="uid://dqdbsia6di82e" path="res://assets/mesh/garlic.tscn" id="3_c7y0h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gfgl6"]
 resource_name = "leafsFall"
@@ -69,7 +71,10 @@ shadow_mesh = SubResource("ArrayMesh_12s7w")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_su0h4"]
 points = PackedVector3Array(0.15, 0.1825, -0.000112593, 0.145742, 0.1825, 0.0999608, 0.0845145, 0, 0.0819499, 0.0869812, 0, -0.000112593, 0.0845145, 0, -0.0820625, 0.145742, 0.1825, -0.100073, 0.132997, 0.1825, 0.199246, 0.0771143, 0, 0.163337, 0.0771143, 0, -0.163449, 0.132997, 0.1825, -0.199359, 0.111854, 0.1825, 0.297068, 0.0648688, 0, 0.243598, 0.0648688, 0, -0.243711, 0.111854, 0.1825, -0.297181, 0.0825176, 0.1825, 0.392752, 0.0261648, 0, 0.398155, 0.0478367, 0, 0.322058, 0.0478367, 0, -0.322171, 0.0261648, 0, -0.398267, 0.0825176, 0.1825, -0.392864, 0.0451057, 0.1825, 0.485621, -2.93702e-05, 0, 0.471437, -2.93702e-05, 0, -0.47155, 0.0451057, 0.1825, -0.485733, -2.93702e-05, 0.1825, 0.575, -0.0451645, 0.1825, 0.485621, -0.082547, 0.1825, 0.392752, -0.0261942, 0, 0.398155, -0.0451645, 0.1825, -0.485733, -2.93702e-05, 0.1825, -0.575, -0.0261942, 0, -0.398267, -0.082547, 0.1825, -0.392864, -0.111913, 0.1825, 0.297068, -0.0478955, 0, 0.322058, -0.0478955, 0, -0.322171, -0.111913, 0.1825, -0.297181, -0.133027, 0.1825, 0.199246, -0.0648982, 0, 0.243598, -0.0648982, 0, -0.243711, -0.133027, 0.1825, -0.199359, -0.145771, 0.1825, 0.0999608, -0.0771731, 0, 0.163337, -0.0771731, 0, -0.163449, -0.145771, 0.1825, -0.100073, -0.0845439, 0, 0.0819499, -0.15, 0.1825, -0.000112593, -0.0845439, 0, -0.0820625, -0.0870106, 0, -0.000112593)
 
-[node name="boat" type="Node3D"]
+[node name="boat" type="Node3D" node_paths=PackedStringArray("body")]
+script = ExtResource("1_iyb40")
+body = NodePath("canoe/StaticBody3D")
+label = "escape"
 
 [node name="canoe" type="MeshInstance3D" parent="."]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, -0.05, 0)
@@ -83,3 +88,6 @@ shape = SubResource("ConvexPolygonShape3D_su0h4")
 
 [node name="canoe_paddle" parent="." instance=ExtResource("1_tnbua")]
 transform = Transform3D(-5.97717, -0.135345, -0.505116, 1.3576e-07, 5.79556, -1.55291, 0.522935, -1.54701, -5.7735, 0, 1.2241, -0.3)
+
+[node name="garlic" parent="." instance=ExtResource("3_c7y0h")]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -0.4, 0.5, -0.1)

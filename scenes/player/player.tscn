@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://ci26d03y7adfv"]
+[gd_scene load_steps=14 format=3 uid="uid://ci26d03y7adfv"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_dqht8"]
 [ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="2_vo32k"]
 [ext_resource type="Material" uid="uid://c4x0xmkl8e3nd" path="res://assets/mats/white.tres" id="2_wblri"]
 [ext_resource type="Script" path="res://scripts/player/player_head.gd" id="3_xo5nw"]
 [ext_resource type="PackedScene" uid="uid://p3c1cgp4d502" path="res://scenes/player/sub_camera.tscn" id="4_v7lrx"]
+[ext_resource type="PackedScene" uid="uid://cs6wja8rwmr1s" path="res://assets/fonts/label.tscn" id="6_ypvq5"]
+[ext_resource type="FontFile" uid="uid://cnngv3231ymrp" path="res://assets/fonts/MajorMonoDisplay-Regular.ttf" id="7_q88lt"]
+[ext_resource type="Texture2D" uid="uid://b2kiwjcfm607u" path="res://assets/textures/blob_shadow.png" id="8_ccq0h"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hmmtu"]
 material = ExtResource("2_wblri")
@@ -32,6 +35,10 @@ material = SubResource("ShaderMaterial_7yqt4")
 flip_faces = true
 size = Vector2(2, 2)
 
+[sub_resource type="LabelSettings" id="LabelSettings_gd8gb"]
+font = ExtResource("7_q88lt")
+font_size = 42
+
 [node name="player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_dqht8")
@@ -50,6 +57,10 @@ script = ExtResource("3_xo5nw")
 
 [node name="camera" type="Camera3D" parent="head"]
 cull_mask = 1048573
+
+[node name="ray" type="RayCast3D" parent="head/camera"]
+target_position = Vector3(0, 0, -3)
+collision_mask = 8
 
 [node name="post" type="MeshInstance3D" parent="head/camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
@@ -73,4 +84,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 cull_mask = 2
 
 [node name="footsteps" type="AudioStreamPlayer" parent="."]
-volume_db = -10.0
+
+[node name="canvas" type="CanvasLayer" parent="."]
+
+[node name="interact_label" parent="canvas" instance=ExtResource("6_ypvq5")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = 60.0
+offset_right = 46.5
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "interact with"
+label_settings = SubResource("LabelSettings_gd8gb")
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+size = Vector3(1, 6, 1)
+texture_albedo = ExtResource("8_ccq0h")
+modulate = Color(1, 1, 1, 0.705882)
+normal_fade = 0.5
+distance_fade_enabled = true
